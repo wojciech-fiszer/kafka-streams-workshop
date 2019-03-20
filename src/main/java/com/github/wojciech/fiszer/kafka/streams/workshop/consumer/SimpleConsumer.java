@@ -22,12 +22,20 @@ public class SimpleConsumer {
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, "app-1");
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         Consumer<String, String> consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singletonList("test-topic"));
+        consumer.subscribe(Collections.singletonList("test"));
+        Runtime.getRuntime().addShutdownHook(new Thread(consumer::close));
+
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-            records.forEach(r -> log.info(r.toString()));
+            records.forEach(r -> log.info("Consumed record key: {}, value: {} from topic: {}, partition: {}",
+                    r.key(),
+                    r.value(),
+                    r.topic(),
+                    r.partition()
+            ));
         }
     }
 }
