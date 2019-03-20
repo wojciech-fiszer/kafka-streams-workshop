@@ -45,6 +45,7 @@ public class SearchQueryStream {
                 .peek((key, searchQueries) -> log.info("Search queries for user: {}, search queries: {}", key, searchQueries));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), properties);
+        streams.cleanUp();
         streams.start();
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }

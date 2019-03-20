@@ -41,6 +41,7 @@ public class OfferInteractionStream {
                 .peek((offerId, numberOfInteractions) -> log.info("Number of interactions for offer {} is {}", offerId, numberOfInteractions));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), properties);
+        streams.cleanUp();
         streams.start();
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
