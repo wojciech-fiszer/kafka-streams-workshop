@@ -1,0 +1,11 @@
+{
+  "namespace": "com.github.wojciech.fiszer.kafka.streams.workshop.avro",
+  "type": "record",
+  "name": "OfferKey",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    }
+  ]
+}

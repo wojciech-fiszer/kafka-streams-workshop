@@ -1,0 +1,14 @@
+{
+  "namespace": "com.github.wojciech.fiszer.kafka.streams.workshop.avro",
+  "type": "record",
+  "name": "SearchQueries",
+  "fields": [
+    {
+      "name": "searchQueries",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    }
+  ]
+}

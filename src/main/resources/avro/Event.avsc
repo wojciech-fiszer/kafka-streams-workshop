@@ -1,0 +1,27 @@
+{
+  "namespace": "com.github.wojciech.fiszer.kafka.streams.workshop.avro",
+  "type": "record",
+  "name": "Event",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "searchQuery",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "offerId",
+      "type": [
+        "null",
+        "long"
+      ],
+      "default": null
+    }
+  ]
+}

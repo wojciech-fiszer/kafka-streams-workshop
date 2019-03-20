@@ -25,7 +25,7 @@ public class SimpleProducer {
         List<String> names = Arrays.asList("John", "Ann", "Mark", "Stephen", "Julia", "Max");
         List<String> colors = Arrays.asList("red", "blue", "green", "yellow");
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             // we want to preserve order of changes of each user, so 'unique' name will be a good key
             String key = names.get(i % names.size());
             String value = colors.get(i % colors.size());
